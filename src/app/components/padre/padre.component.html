@@ -1,0 +1,32 @@
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand">ClimaHoy</a>
+    <form class="d-flex" role="search">
+      <input
+        [(ngModel)]="city"
+        name="city"
+        class="form-control me-2"
+        type="search"
+        placeholder="Ingrese Ciudad"
+        aria-label="Search"
+      />
+      <button
+        class="btn btn-outline-success"
+        type="submit"
+        (click)="traerDatos()"
+      >
+        Search
+      </button>
+    </form>
+  </div>
+</nav>
+
+<div class="container mt-2">
+  <div *ngIf="clima" class="centro">
+    <h1 class="mb-3">Temperatura:</h1>
+    <p>Ciudad: {{ clima.name }}, {{ clima.sys.country }}.</p>
+    <p>Temperatura: {{ redonderarNumero(clima.main.temp) }}°C</p>
+    <p>Humedad: {{ clima.main.humidity }}%</p>
+    <p>Viento: {{ redonderarNumero(clima.wind.speed * 3.6) }} Km/h</p>
+  </div>
+</div>
